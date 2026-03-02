@@ -1,0 +1,15 @@
+{
+  "schema_version": "1",
+  "generated_at": "2026-03-02T23:52:15.060Z",
+  "profiles": [
+    {
+      "id": "mcp__jira",
+      "version": "1.0.0",
+      "description": "Jira issue and search results — extracts key, summary, status, assignee, priority",
+      "mcp_pattern": "mcp__jira__*",
+      "file": "profiles/mcp__jira/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__jira__search_issues"
+    }
+  ]
+}

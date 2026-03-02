@@ -1,0 +1,28 @@
+name: Regenerate manifest
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "profiles/**"
+
+jobs:
+  manifest:
+    name: Regenerate manifest.json
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun run manifest
+      - name: Commit updated manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add manifest.json
+          git diff --staged --quiet || git commit -m "chore: regenerate manifest.json"
+          git push
