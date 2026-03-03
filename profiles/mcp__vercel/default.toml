@@ -1,0 +1,34 @@
+[profile]
+id          = "mcp__vercel"
+version     = "1.0.0"
+description = "Vercel deployments and projects — extracts name, status, url, created, duration"
+mcp_pattern = "mcp__vercel__*"
+author      = "sakebomb"
+sample_tool = "mcp__vercel__list_deployments"
+
+[strategy]
+type       = "json_extract"
+items_path = ["deployments", "projects", "data"]
+fields     = [
+  "name",
+  "url",
+  "state",
+  "readyState",
+  "createdAt",
+  "buildingAt",
+  "target",
+  "meta.githubCommitMessage",
+]
+max_items           = 10
+max_chars_per_field = 200
+fallback_chars      = 500
+
+[strategy.labels]
+"name"                      = "Name"
+"url"                       = "URL"
+"state"                     = "State"
+"readyState"                = "State"
+"createdAt"                 = "Created"
+"buildingAt"                = "Built"
+"target"                    = "Target"
+"meta.githubCommitMessage"  = "Commit"

@@ -1,0 +1,34 @@
+[profile]
+id          = "mcp__hubspot"
+version     = "1.0.0"
+description = "HubSpot CRM contacts, deals, and companies — extracts key fields and discards full property histories"
+mcp_pattern = ["mcp__hubspot__*", "mcp__hubspot_crm__*"]
+author      = "sakebomb"
+sample_tool = "mcp__hubspot__search_contacts"
+
+[strategy]
+type       = "json_extract"
+items_path = ["results", "contacts", "deals", "companies", "objects"]
+fields     = [
+  "properties.firstname",
+  "properties.lastname",
+  "properties.email",
+  "properties.dealname",
+  "properties.dealstage",
+  "properties.amount",
+  "properties.name",
+  "properties.hs_lastmodifieddate",
+]
+max_items           = 10
+max_chars_per_field = 200
+fallback_chars      = 500
+
+[strategy.labels]
+"properties.firstname"          = "First"
+"properties.lastname"           = "Last"
+"properties.email"              = "Email"
+"properties.dealname"           = "Deal"
+"properties.dealstage"          = "Stage"
+"properties.amount"             = "Amount"
+"properties.name"               = "Name"
+"properties.hs_lastmodifieddate" = "Modified"

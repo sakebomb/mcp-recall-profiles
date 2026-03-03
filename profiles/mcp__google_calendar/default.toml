@@ -1,0 +1,32 @@
+[profile]
+id          = "mcp__google_calendar"
+version     = "1.0.0"
+description = "Google Calendar events — extracts title, start, end, location, attendee count; discards full descriptions and recurrence rules"
+mcp_pattern = ["mcp__google_calendar__*", "mcp__googlecalendar__*"]
+author      = "sakebomb"
+sample_tool = "mcp__google_calendar__list_events"
+
+[strategy]
+type       = "json_extract"
+items_path = ["items", "events"]
+fields     = [
+  "summary",
+  "start.dateTime",
+  "start.date",
+  "end.dateTime",
+  "end.date",
+  "location",
+  "status",
+]
+max_items           = 20
+max_chars_per_field = 200
+fallback_chars      = 500
+
+[strategy.labels]
+"summary"        = "Title"
+"start.dateTime" = "Start"
+"start.date"     = "Start"
+"end.dateTime"   = "End"
+"end.date"       = "End"
+"location"       = "Location"
+"status"         = "Status"
