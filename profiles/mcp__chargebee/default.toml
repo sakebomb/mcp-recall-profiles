@@ -1,0 +1,54 @@
+[profile]
+id          = "mcp__chargebee"
+version     = "1.0.0"
+description = "Chargebee subscription billing — extracts id, status, plan, customer, period, and amount from subscriptions, customers, and invoices"
+mcp_pattern = ["mcp__chargebee__*", "mcp__chargebee_mcp__*"]
+author      = "sakebomb"
+sample_tool = "mcp__chargebee__list_subscriptions"
+
+# Chargebee list responses wrap items: { "list": [ { "subscription": {...} } ] }
+# items_path handles both the wrapper and direct array shapes.
+[strategy]
+type       = "json_extract"
+items_path = ["list", "subscriptions", "customers", "invoices"]
+fields     = [
+  "id",
+  "status",
+  "plan_id",
+  "customer_id",
+  "subscription_id",
+  "current_term_start",
+  "current_term_end",
+  "billing_period",
+  "billing_period_unit",
+  "currency_code",
+  "email",
+  "first_name",
+  "last_name",
+  "company",
+  "amount_paid",
+  "amount_due",
+  "date",
+]
+max_items           = 10
+max_chars_per_field = 200
+fallback_chars      = 500
+
+[strategy.labels]
+"id"                   = "ID"
+"status"               = "Status"
+"plan_id"              = "Plan"
+"customer_id"          = "Customer"
+"subscription_id"      = "Subscription"
+"current_term_start"   = "Term Start"
+"current_term_end"     = "Term End"
+"billing_period"       = "Period"
+"billing_period_unit"  = "Period Unit"
+"currency_code"        = "Currency"
+"email"                = "Email"
+"first_name"           = "First"
+"last_name"            = "Last"
+"company"              = "Company"
+"amount_paid"          = "Paid"
+"amount_due"           = "Due"
+"date"                 = "Date"

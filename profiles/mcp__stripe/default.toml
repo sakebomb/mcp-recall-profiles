@@ -1,0 +1,46 @@
+[profile]
+id          = "mcp__stripe"
+version     = "1.0.0"
+description = "Stripe payments — extracts id, object type, status, amount, currency, customer, email from charges, customers, subscriptions, invoices"
+mcp_pattern = "mcp__stripe__*"
+author      = "sakebomb"
+sample_tool = "mcp__stripe__list_customers"
+
+[strategy]
+type       = "json_extract"
+items_path = ["data", "customers", "charges", "subscriptions", "invoices", "payment_intents"]
+fields     = [
+  "id",
+  "object",
+  "status",
+  "amount",
+  "amount_due",
+  "amount_paid",
+  "currency",
+  "customer",
+  "email",
+  "name",
+  "description",
+  "created",
+  "plan.id",
+  "subscription",
+]
+max_items           = 10
+max_chars_per_field = 200
+fallback_chars      = 500
+
+[strategy.labels]
+"id"           = "ID"
+"object"       = "Object"
+"status"       = "Status"
+"amount"       = "Amount"
+"amount_due"   = "Due"
+"amount_paid"  = "Paid"
+"currency"     = "Currency"
+"customer"     = "Customer"
+"email"        = "Email"
+"name"         = "Name"
+"description"  = "Description"
+"created"      = "Created"
+"plan.id"      = "Plan"
+"subscription" = "Subscription"

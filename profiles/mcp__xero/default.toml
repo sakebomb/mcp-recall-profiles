@@ -1,0 +1,51 @@
+[profile]
+id          = "mcp__xero"
+version     = "1.0.0"
+description = "Xero accounting — extracts key fields from invoices, contacts, accounts, and bank transactions"
+mcp_pattern = ["mcp__xero__*", "mcp__xero_mcp__*"]
+author      = "sakebomb"
+sample_tool = "mcp__xero__list_invoices"
+
+# Xero uses PascalCase field names in its API responses.
+[strategy]
+type       = "json_extract"
+items_path = ["Invoices", "Contacts", "Accounts", "BankTransactions", "Payments", "CreditNotes"]
+fields     = [
+  "InvoiceID",
+  "InvoiceNumber",
+  "ContactID",
+  "AccountID",
+  "Type",
+  "Status",
+  "Total",
+  "AmountDue",
+  "AmountPaid",
+  "CurrencyCode",
+  "Contact.Name",
+  "Name",
+  "EmailAddress",
+  "Date",
+  "DueDate",
+  "Reference",
+]
+max_items           = 10
+max_chars_per_field = 200
+fallback_chars      = 500
+
+[strategy.labels]
+"InvoiceID"     = "Invoice ID"
+"InvoiceNumber" = "Number"
+"ContactID"     = "Contact ID"
+"AccountID"     = "Account ID"
+"Type"          = "Type"
+"Status"        = "Status"
+"Total"         = "Total"
+"AmountDue"     = "Due"
+"AmountPaid"    = "Paid"
+"CurrencyCode"  = "Currency"
+"Contact.Name"  = "Contact"
+"Name"          = "Name"
+"EmailAddress"  = "Email"
+"Date"          = "Date"
+"DueDate"       = "Due Date"
+"Reference"     = "Reference"
