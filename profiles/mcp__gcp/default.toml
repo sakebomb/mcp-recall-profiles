@@ -1,0 +1,30 @@
+[profile]
+id          = "mcp__gcp"
+version     = "1.0.0"
+description = "GCP resource lists — extracts name, id, status, zone from items arrays"
+mcp_pattern = ["mcp__gcp__*", "mcp__google_cloud__*", "mcp__gcloud__*"]
+author      = "sakebomb"
+sample_tool = "mcp__gcp__list_instances"
+
+[strategy]
+type       = "json_extract"
+items_path = ["items", "instances", "buckets", "disks", "zones", "results"]
+fields     = [
+  "name",
+  "id",
+  "status",
+  "zone",
+  "description",
+  "selfLink",
+]
+max_items           = 10
+max_chars_per_field = 200
+fallback_chars      = 500
+
+[strategy.labels]
+"name"        = "Name"
+"id"          = "ID"
+"status"      = "Status"
+"zone"        = "Zone"
+"description" = "Description"
+"selfLink"    = "URL"

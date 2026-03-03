@@ -1,7 +1,66 @@
 {
   "schema_version": "1",
-  "generated_at": "2026-03-02T23:52:42.497Z",
+  "generated_at": "2026-03-03T01:47:30.686Z",
   "profiles": [
+    {
+      "id": "mcp__aws",
+      "version": "1.0.0",
+      "description": "AWS CLI/SDK responses — depth-limited JSON truncation (AWS responses vary too much for field extraction)",
+      "mcp_pattern": [
+        "mcp__aws__*",
+        "mcp__aws_cli__*",
+        "mcp__awscli__*"
+      ],
+      "file": "profiles/mcp__aws/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__aws__list_buckets"
+    },
+    {
+      "id": "mcp__confluence",
+      "version": "1.0.0",
+      "description": "Confluence page and search results — extracts id, title, space, status, version",
+      "mcp_pattern": [
+        "mcp__confluence__*",
+        "mcp__atlassian_confluence__*"
+      ],
+      "file": "profiles/mcp__confluence/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__confluence__search_content"
+    },
+    {
+      "id": "mcp__figma",
+      "version": "1.0.0",
+      "description": "Figma comments, components and styles — extracts id, message/name, description",
+      "mcp_pattern": "mcp__figma__*",
+      "file": "profiles/mcp__figma/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__figma__get_comments"
+    },
+    {
+      "id": "mcp__gcp",
+      "version": "1.0.0",
+      "description": "GCP resource lists — extracts name, id, status, zone from items arrays",
+      "mcp_pattern": [
+        "mcp__gcp__*",
+        "mcp__google_cloud__*",
+        "mcp__gcloud__*"
+      ],
+      "file": "profiles/mcp__gcp/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__gcp__list_instances"
+    },
+    {
+      "id": "mcp__gmail",
+      "version": "1.0.0",
+      "description": "Gmail message lists and search results — extracts id, from, subject, date, snippet",
+      "mcp_pattern": [
+        "mcp__gmail__*",
+        "mcp__google_gmail__*"
+      ],
+      "file": "profiles/mcp__gmail/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__gmail__list_emails"
+    },
     {
       "id": "mcp__jira",
       "version": "1.0.0",

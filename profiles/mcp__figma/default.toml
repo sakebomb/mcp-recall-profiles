@@ -1,0 +1,28 @@
+[profile]
+id          = "mcp__figma"
+version     = "1.0.0"
+description = "Figma comments, components and styles — extracts id, message/name, description"
+mcp_pattern = "mcp__figma__*"
+author      = "sakebomb"
+sample_tool = "mcp__figma__get_comments"
+
+[strategy]
+type       = "json_extract"
+items_path = ["comments", "components", "styles", "nodes"]
+fields     = [
+  "id",
+  "message",
+  "name",
+  "description",
+  "key",
+]
+max_items           = 10
+max_chars_per_field = 200
+fallback_chars      = 500
+
+[strategy.labels]
+"id"          = "ID"
+"message"     = "Message"
+"name"        = "Name"
+"description" = "Description"
+"key"         = "Key"

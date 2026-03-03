@@ -1,0 +1,17 @@
+[profile]
+id          = "mcp__aws"
+version     = "1.0.0"
+description = "AWS CLI/SDK responses — depth-limited JSON truncation (AWS responses vary too much for field extraction)"
+mcp_pattern = ["mcp__aws__*", "mcp__aws_cli__*", "mcp__awscli__*"]
+author      = "sakebomb"
+sample_tool = "mcp__aws__list_buckets"
+
+# AWS API responses are deeply nested and vary significantly by service.
+# json_truncate is safer than json_extract here. For specific AWS services
+# (e.g. EC2, S3, RDS), create a more targeted profile in your user dir:
+#   ~/.config/mcp-recall/profiles/mcp__aws__ec2/default.toml
+[strategy]
+type            = "json_truncate"
+max_depth       = 3
+max_array_items = 5
+fallback_chars  = 500
