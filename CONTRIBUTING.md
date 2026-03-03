@@ -15,7 +15,22 @@ cd mcp-recall-profiles
 bun install
 ```
 
-## Writing a profile
+## Using `retrain` to generate a starting point
+
+If you've been using the MCP with mcp-recall already, the fastest approach is to let it analyse your stored data:
+
+```bash
+mcp-recall profiles retrain <mcp-name>    # see what fields appear frequently
+mcp-recall profiles retrain --apply       # write suggestions to your local profile
+```
+
+This works with existing profiles (it adds missing fields) or after `mcp-recall learn` generates a template. Review the suggestions, then submit via `mcp-recall profiles feed <path>`.
+
+→ [Full retrain guide](https://github.com/sakebomb/mcp-recall/blob/main/docs/retrain.md)
+
+---
+
+## Writing a profile from scratch
 
 Full schema reference: [`docs/profile-schema.md`](https://github.com/sakebomb/mcp-recall/blob/main/docs/profile-schema.md) in the main repo.
 
