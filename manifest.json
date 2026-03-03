@@ -1,7 +1,19 @@
 {
   "schema_version": "1",
-  "generated_at": "2026-03-03T02:29:39.301Z",
+  "generated_at": "2026-03-03T12:00:00.000Z",
   "profiles": [
+    {
+      "id": "mcp__airtable",
+      "version": "1.0.0",
+      "description": "Airtable records — depth-limited truncation (field names vary per base and table)",
+      "mcp_pattern": [
+        "mcp__airtable__*",
+        "mcp__airtable_mcp__*"
+      ],
+      "file": "profiles/mcp__airtable/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__airtable__list_records"
+    },
     {
       "id": "mcp__aws",
       "version": "1.0.0",
@@ -16,6 +28,18 @@
       "sample_tool": "mcp__aws__list_buckets"
     },
     {
+      "id": "mcp__chargebee",
+      "version": "1.0.0",
+      "description": "Chargebee subscription billing — extracts id, status, plan, customer, period, and amount from subscriptions, customers, and invoices",
+      "mcp_pattern": [
+        "mcp__chargebee__*",
+        "mcp__chargebee_mcp__*"
+      ],
+      "file": "profiles/mcp__chargebee/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__chargebee__list_subscriptions"
+    },
+    {
       "id": "mcp__confluence",
       "version": "1.0.0",
       "description": "Confluence page and search results — extracts id, title, space, status, version",
@@ -26,6 +50,18 @@
       "file": "profiles/mcp__confluence/default.toml",
       "author": "sakebomb",
       "sample_tool": "mcp__confluence__search_content"
+    },
+    {
+      "id": "mcp__datadog",
+      "version": "1.0.0",
+      "description": "Datadog monitors, events, and dashboards — extracts id, name/title, type, status, query, tags",
+      "mcp_pattern": [
+        "mcp__datadog__*",
+        "mcp__datadog_mcp__*"
+      ],
+      "file": "profiles/mcp__datadog/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__datadog__list_monitors"
     },
     {
       "id": "mcp__figma",
@@ -74,6 +110,18 @@
       "sample_tool": "mcp__google_calendar__list_events"
     },
     {
+      "id": "mcp__grafana",
+      "version": "1.0.0",
+      "description": "Grafana dashboards, alerts, and data sources — extracts uid, title, status, url, tags",
+      "mcp_pattern": [
+        "mcp__grafana__*",
+        "mcp__grafana_mcp__*"
+      ],
+      "file": "profiles/mcp__grafana/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__grafana__list_dashboards"
+    },
+    {
       "id": "mcp__hubspot",
       "version": "1.0.0",
       "description": "HubSpot CRM contacts, deals, and companies — extracts key fields and discards full property histories",
@@ -95,6 +143,48 @@
       "sample_tool": "mcp__jira__search_issues"
     },
     {
+      "id": "mcp__notion",
+      "version": "1.0.0",
+      "description": "Notion pages, databases, and search results — depth-limited truncation (block/property structures vary per database)",
+      "mcp_pattern": "mcp__notion__*",
+      "file": "profiles/mcp__notion/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__notion__search"
+    },
+    {
+      "id": "mcp__shopify",
+      "version": "1.0.0",
+      "description": "Shopify orders, products, and customers — extracts id, title/name, status, price, email, fulfillment",
+      "mcp_pattern": [
+        "mcp__shopify__*",
+        "mcp__shopify_mcp__*"
+      ],
+      "file": "profiles/mcp__shopify/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__shopify__list_orders"
+    },
+    {
+      "id": "mcp__stripe",
+      "version": "1.0.0",
+      "description": "Stripe payments — extracts id, object type, status, amount, currency, customer, email from charges, customers, subscriptions, invoices",
+      "mcp_pattern": "mcp__stripe__*",
+      "file": "profiles/mcp__stripe/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__stripe__list_customers"
+    },
+    {
+      "id": "mcp__teams",
+      "version": "1.0.0",
+      "description": "Microsoft Teams messages, channels, and chats — extracts id, subject, sender, timestamp, importance",
+      "mcp_pattern": [
+        "mcp__teams__*",
+        "mcp__microsoft_teams__*"
+      ],
+      "file": "profiles/mcp__teams/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__teams__list_messages"
+    },
+    {
       "id": "mcp__vercel",
       "version": "1.0.0",
       "description": "Vercel deployments and projects — extracts name, status, url, created, duration",
@@ -102,6 +192,18 @@
       "file": "profiles/mcp__vercel/default.toml",
       "author": "sakebomb",
       "sample_tool": "mcp__vercel__list_deployments"
+    },
+    {
+      "id": "mcp__xero",
+      "version": "1.0.0",
+      "description": "Xero accounting — extracts key fields from invoices, contacts, accounts, and bank transactions",
+      "mcp_pattern": [
+        "mcp__xero__*",
+        "mcp__xero_mcp__*"
+      ],
+      "file": "profiles/mcp__xero/default.toml",
+      "author": "sakebomb",
+      "sample_tool": "mcp__xero__list_invoices"
     }
   ]
 }

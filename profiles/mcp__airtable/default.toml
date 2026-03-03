@@ -1,0 +1,18 @@
+[profile]
+id          = "mcp__airtable"
+version     = "1.0.0"
+description = "Airtable records — depth-limited truncation (field names vary per base and table)"
+mcp_pattern = ["mcp__airtable__*", "mcp__airtable_mcp__*"]
+author      = "sakebomb"
+sample_tool = "mcp__airtable__list_records"
+
+# Airtable field names are user-defined and vary per base/table.
+# json_truncate preserves the record structure (id, fields, createdTime)
+# without needing to know field names in advance. For a specific table with
+# known fields, create a targeted user profile:
+#   ~/.config/mcp-recall/profiles/mcp__airtable__<table>/default.toml
+[strategy]
+type            = "json_truncate"
+max_depth       = 2
+max_array_items = 5
+fallback_chars  = 500

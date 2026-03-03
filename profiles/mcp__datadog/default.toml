@@ -1,0 +1,42 @@
+[profile]
+id          = "mcp__datadog"
+version     = "1.0.0"
+description = "Datadog monitors, events, and dashboards — extracts id, name/title, type, status, query, tags"
+mcp_pattern = ["mcp__datadog__*", "mcp__datadog_mcp__*"]
+author      = "sakebomb"
+sample_tool = "mcp__datadog__list_monitors"
+
+[strategy]
+type       = "json_extract"
+items_path = ["monitors", "events", "dashboards", "data", "series"]
+fields     = [
+  "id",
+  "name",
+  "title",
+  "type",
+  "status",
+  "overall_state",
+  "message",
+  "query",
+  "tags",
+  "created",
+  "modified",
+  "alert_type",
+]
+max_items           = 10
+max_chars_per_field = 200
+fallback_chars      = 500
+
+[strategy.labels]
+"id"            = "ID"
+"name"          = "Name"
+"title"         = "Title"
+"type"          = "Type"
+"status"        = "Status"
+"overall_state" = "State"
+"message"       = "Message"
+"query"         = "Query"
+"tags"          = "Tags"
+"created"       = "Created"
+"modified"      = "Modified"
+"alert_type"    = "Alert Type"

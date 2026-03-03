@@ -1,0 +1,48 @@
+[profile]
+id          = "mcp__shopify"
+version     = "1.0.0"
+description = "Shopify orders, products, and customers — extracts id, title/name, status, price, email, fulfillment"
+mcp_pattern = ["mcp__shopify__*", "mcp__shopify_mcp__*"]
+author      = "sakebomb"
+sample_tool = "mcp__shopify__list_orders"
+
+[strategy]
+type       = "json_extract"
+items_path = ["orders", "products", "customers", "data"]
+fields     = [
+  "id",
+  "name",
+  "title",
+  "email",
+  "first_name",
+  "last_name",
+  "status",
+  "financial_status",
+  "fulfillment_status",
+  "total_price",
+  "currency",
+  "created_at",
+  "product_type",
+  "vendor",
+  "tags",
+]
+max_items           = 10
+max_chars_per_field = 200
+fallback_chars      = 500
+
+[strategy.labels]
+"id"                  = "ID"
+"name"                = "Name"
+"title"               = "Title"
+"email"               = "Email"
+"first_name"          = "First"
+"last_name"           = "Last"
+"status"              = "Status"
+"financial_status"    = "Financial"
+"fulfillment_status"  = "Fulfillment"
+"total_price"         = "Total"
+"currency"            = "Currency"
+"created_at"          = "Created"
+"product_type"        = "Type"
+"vendor"              = "Vendor"
+"tags"                = "Tags"
