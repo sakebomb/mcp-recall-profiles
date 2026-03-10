@@ -114,6 +114,22 @@ function validateProfile(file: string): string[] {
     }
   }
 
+  // Numeric ceiling checks
+  const numericCeilings: Array<[string, number]> = [
+    ["max_depth", 20],
+    ["max_items", 1000],
+    ["max_array_items", 1000],
+    ["max_chars", 1_000_000],
+    ["max_chars_per_field", 100_000],
+    ["fallback_chars", 100_000],
+  ];
+  for (const [key, ceiling] of numericCeilings) {
+    const val = strategy[key];
+    if (typeof val === "number" && val > ceiling) {
+      errors.push(`strategy.${key} exceeds maximum allowed value of ${ceiling}`);
+    }
+  }
+
   return errors;
 }
 
