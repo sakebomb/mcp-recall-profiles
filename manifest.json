@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "generated_at": "2026-03-03T04:57:49.796Z",
+  "generated_at": "2026-03-10T18:05:46.948Z",
   "profiles": [
     {
       "id": "mcp__airtable",
@@ -11,6 +11,7 @@
         "mcp__airtable_mcp__*"
       ],
       "file": "profiles/mcp__airtable/default.toml",
+      "sha256": "09e2554904f678ed210d38aa767d0d6920a0b33a9354f065b976251a380785bb",
       "author": "sakebomb",
       "sample_tool": "mcp__airtable__list_records"
     },
@@ -24,6 +25,7 @@
         "mcp__awscli__*"
       ],
       "file": "profiles/mcp__aws/default.toml",
+      "sha256": "d552c549ea95d49a8e8ce8f653f6e3992dadabc31fde7c1fc0e396cb24ff1230",
       "author": "sakebomb",
       "sample_tool": "mcp__aws__list_buckets"
     },
@@ -36,6 +38,7 @@
         "mcp__chargebee_mcp__*"
       ],
       "file": "profiles/mcp__chargebee/default.toml",
+      "sha256": "a1ee22e137ca82a9f6d2e5529174647dc5bbaff54d294f81e1c8f785c2534404",
       "author": "sakebomb",
       "sample_tool": "mcp__chargebee__list_subscriptions"
     },
@@ -48,6 +51,7 @@
         "mcp__atlassian_confluence__*"
       ],
       "file": "profiles/mcp__confluence/default.toml",
+      "sha256": "d600892a18c7c468d057e44d01394fa8f40cec4d84af6db3316fd9a51720f03c",
       "author": "sakebomb",
       "sample_tool": "mcp__confluence__search_content"
     },
@@ -60,6 +64,7 @@
         "mcp__datadog_mcp__*"
       ],
       "file": "profiles/mcp__datadog/default.toml",
+      "sha256": "e5b0126b9de141639a572341e304b6e2ec576000b10586228f2f6b9a5ddf8724",
       "author": "sakebomb",
       "sample_tool": "mcp__datadog__list_monitors"
     },
@@ -69,6 +74,7 @@
       "description": "Figma comments, components and styles — extracts id, message/name, description",
       "mcp_pattern": "mcp__figma__*",
       "file": "profiles/mcp__figma/default.toml",
+      "sha256": "977e1e4d55a4a14f63c916140d62666b35b05a61f223ac5935258a66560106cb",
       "author": "sakebomb",
       "sample_tool": "mcp__figma__get_comments"
     },
@@ -82,6 +88,7 @@
         "mcp__gcloud__*"
       ],
       "file": "profiles/mcp__gcp/default.toml",
+      "sha256": "5af004844fa5e587d9d035be7c1b86d8664cd3eaa1363bcec06a78b12a4a3848",
       "author": "sakebomb",
       "sample_tool": "mcp__gcp__list_instances"
     },
@@ -94,6 +101,7 @@
         "mcp__google_gmail__*"
       ],
       "file": "profiles/mcp__gmail/default.toml",
+      "sha256": "f030f248a59fe5177822d92c7a24c6bceb7db0668f12c95fe8373dd60b8fc24f",
       "author": "sakebomb",
       "sample_tool": "mcp__gmail__list_emails"
     },
@@ -106,6 +114,7 @@
         "mcp__googlecalendar__*"
       ],
       "file": "profiles/mcp__google_calendar/default.toml",
+      "sha256": "f1ace2c3a58f8f2d571ca8e9f9a77167a93f0429f688660c74b874991d5c7728",
       "author": "sakebomb",
       "sample_tool": "mcp__google_calendar__list_events"
     },
@@ -118,6 +127,7 @@
         "mcp__grafana_mcp__*"
       ],
       "file": "profiles/mcp__grafana/default.toml",
+      "sha256": "51156bde4ec0ee96a50dce76e03254a251aae55199362f1879e9d0382f0ed718",
       "author": "sakebomb",
       "sample_tool": "mcp__grafana__list_dashboards"
     },
@@ -130,6 +140,7 @@
         "mcp__hubspot_crm__*"
       ],
       "file": "profiles/mcp__hubspot/default.toml",
+      "sha256": "28409e703a40cb61547b1ae5a04f7d67ab9439e26400dc5840d7e243fce76906",
       "author": "sakebomb",
       "sample_tool": "mcp__hubspot__search_contacts"
     },
@@ -139,6 +150,7 @@
       "description": "Jira issue and search results — extracts key, summary, status, assignee, priority",
       "mcp_pattern": "mcp__jira__*",
       "file": "profiles/mcp__jira/default.toml",
+      "sha256": "3bb2c9e70e5e47816cc5da2da73eb6e9650fbd142843565ccfad99e59884b731",
       "author": "sakebomb",
       "sample_tool": "mcp__jira__search_issues"
     },
@@ -148,6 +160,7 @@
       "description": "Notion pages, databases, and search results — depth-limited truncation (block/property structures vary per database)",
       "mcp_pattern": "mcp__notion__*",
       "file": "profiles/mcp__notion/default.toml",
+      "sha256": "a94674e9ee9aefe7577912b523f67b4f3658f0f82fb2cba1444bd022ce35f15f",
       "author": "sakebomb",
       "sample_tool": "mcp__notion__search"
     },
@@ -160,6 +173,7 @@
         "mcp__shopify_mcp__*"
       ],
       "file": "profiles/mcp__shopify/default.toml",
+      "sha256": "bb3a0b5f5dcae952d4c29fa689b27a16285144cc6fdc9252de643305dc0d97ec",
       "author": "sakebomb",
       "sample_tool": "mcp__shopify__list_orders"
     },
@@ -169,6 +183,7 @@
       "description": "Stripe payments — extracts id, object type, status, amount, currency, customer, email from charges, customers, subscriptions, invoices",
       "mcp_pattern": "mcp__stripe__*",
       "file": "profiles/mcp__stripe/default.toml",
+      "sha256": "71fc3ba89b180fb0e5dda306cff6433e60db189e8cf5e4ed40d446a81f1fc03c",
       "author": "sakebomb",
       "sample_tool": "mcp__stripe__list_customers"
     },
@@ -181,6 +196,7 @@
         "mcp__microsoft_teams__*"
       ],
       "file": "profiles/mcp__teams/default.toml",
+      "sha256": "6ae233338b8f883b03f36370db3ecd46fdb1864e67a10f287c87700dabb38424",
       "author": "sakebomb",
       "sample_tool": "mcp__teams__list_messages"
     },
@@ -190,6 +206,7 @@
       "description": "Vercel deployments and projects — extracts name, status, url, created, duration",
       "mcp_pattern": "mcp__vercel__*",
       "file": "profiles/mcp__vercel/default.toml",
+      "sha256": "23880426dcae5dbe77462d3e4ca2c34d195136208e96b547b14c313245950c3d",
       "author": "sakebomb",
       "sample_tool": "mcp__vercel__list_deployments"
     },
@@ -202,6 +219,7 @@
         "mcp__xero_mcp__*"
       ],
       "file": "profiles/mcp__xero/default.toml",
+      "sha256": "2fe65dd12f3f316c12f3f7c58e11dfa9facca8a6aa25119c015bb2790971328d",
       "author": "sakebomb",
       "sample_tool": "mcp__xero__list_invoices"
     }
