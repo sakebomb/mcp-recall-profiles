@@ -1,5 +1,6 @@
 [profile]
 id          = "mcp__gmail"
+short_name  = "gmail"
 version     = "1.0.0"
 description = "Gmail message lists and search results — extracts id, from, subject, date, snippet"
 mcp_pattern = ["mcp__gmail__*", "mcp__google_gmail__*"]

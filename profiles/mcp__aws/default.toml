@@ -1,5 +1,6 @@
 [profile]
 id          = "mcp__aws"
+short_name  = "aws"
 version     = "1.0.0"
 description = "AWS CLI/SDK responses — depth-limited JSON truncation (AWS responses vary too much for field extraction)"
 mcp_pattern = ["mcp__aws__*", "mcp__aws_cli__*", "mcp__awscli__*"]

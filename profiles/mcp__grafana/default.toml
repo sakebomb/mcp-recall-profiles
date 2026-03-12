@@ -1,9 +1,11 @@
 [profile]
 id          = "mcp__grafana"
+short_name  = "grafana"
 version     = "1.0.0"
 description = "Grafana dashboards, alerts, and data sources — extracts uid, title, status, url, tags"
 mcp_pattern = ["mcp__grafana__*", "mcp__grafana_mcp__*"]
 author      = "sakebomb"
+mcp_url     = "https://github.com/grafana/mcp-grafana"
 sample_tool = "mcp__grafana__list_dashboards"
 
 [strategy]

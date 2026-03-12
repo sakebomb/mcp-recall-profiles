@@ -1,5 +1,6 @@
 [profile]
 id          = "mcp__hubspot"
+short_name  = "hubspot"
 version     = "1.0.0"
 description = "HubSpot CRM contacts, deals, and companies — extracts key fields and discards full property histories"
 mcp_pattern = ["mcp__hubspot__*", "mcp__hubspot_crm__*"]

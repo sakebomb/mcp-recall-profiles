@@ -149,6 +149,31 @@ for (const file of files) {
   }
 }
 
+// Cross-profile check: short_name must be unique
+const shortNameMap = new Map<string, string>(); // short_name → file
+for (const file of files) {
+  let parsed: unknown;
+  try {
+    parsed = parse(readFileSync(file, "utf8"));
+  } catch {
+    continue;
+  }
+  const p = parsed as Record<string, unknown>;
+  const profile = p["profile"] as Record<string, unknown> | undefined;
+  if (!profile) continue;
+  const id = String(profile["id"] ?? "");
+  const shortName = String(profile["short_name"] ?? id.replace(/^mcp__/, ""));
+  const existing = shortNameMap.get(shortName);
+  if (existing) {
+    failures.push({
+      file: file.replace(profilesDir + "/", ""),
+      errors: [`short_name "${shortName}" conflicts with ${existing.replace(profilesDir + "/", "")} — set an explicit short_name to disambiguate`],
+    });
+  } else {
+    shortNameMap.set(shortName, file);
+  }
+}
+
 if (failures.length > 0) {
   console.error(`\n${failures.length} profile(s) failed validation:\n`);
   for (const { file, errors } of failures) {

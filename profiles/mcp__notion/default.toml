@@ -1,5 +1,6 @@
 [profile]
 id          = "mcp__notion"
+short_name  = "notion"
 version     = "1.0.0"
 description = "Notion pages, databases, and search results — depth-limited truncation (block/property structures vary per database)"
 mcp_pattern = "mcp__notion__*"
