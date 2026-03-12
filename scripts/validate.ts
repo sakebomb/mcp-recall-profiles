@@ -162,7 +162,15 @@ for (const file of files) {
   const profile = p["profile"] as Record<string, unknown> | undefined;
   if (!profile) continue;
   const id = String(profile["id"] ?? "");
-  const shortName = String(profile["short_name"] ?? id.replace(/^mcp__/, ""));
+  const rawShortName = profile["short_name"];
+  // Validate format when explicitly set
+  if (rawShortName !== undefined && !ID_RE.test(String(rawShortName))) {
+    failures.push({
+      file: file.replace(profilesDir + "/", ""),
+      errors: [`short_name "${rawShortName}" must match [a-z0-9_-]+`],
+    });
+  }
+  const shortName = String(rawShortName ?? id.replace(/^mcp__/, ""));
   const existing = shortNameMap.get(shortName);
   if (existing) {
     failures.push({
