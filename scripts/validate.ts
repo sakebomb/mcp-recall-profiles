@@ -163,12 +163,13 @@ for (const file of files) {
   if (!profile) continue;
   const id = String(profile["id"] ?? "");
   const rawShortName = profile["short_name"];
-  // Validate format when explicitly set
+  // Validate format when explicitly set — skip uniqueness check for invalid values
   if (rawShortName !== undefined && !ID_RE.test(String(rawShortName))) {
     failures.push({
       file: file.replace(profilesDir + "/", ""),
       errors: [`short_name "${rawShortName}" must match [a-z0-9_-]+`],
     });
+    continue;
   }
   const shortName = String(rawShortName ?? id.replace(/^mcp__/, ""));
   const existing = shortNameMap.get(shortName);
