@@ -1,0 +1,24 @@
+name: Sign manifest
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "manifest.json"
+  workflow_dispatch:
+
+jobs:
+  sign:
+    name: Attest manifest.json
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      attestations: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Attest manifest.json
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: manifest.json
