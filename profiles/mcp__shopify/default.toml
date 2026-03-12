@@ -1,5 +1,6 @@
 [profile]
 id          = "mcp__shopify"
+short_name  = "shopify"
 version     = "1.0.0"
 description = "Shopify orders, products, and customers — extracts id, title/name, status, price, email, fulfillment"
 mcp_pattern = ["mcp__shopify__*", "mcp__shopify_mcp__*"]

@@ -1,9 +1,10 @@
 {
   "schema_version": "1",
-  "generated_at": "2026-03-10T18:05:46.948Z",
+  "generated_at": "2026-03-12T16:19:42.452Z",
   "profiles": [
     {
       "id": "mcp__airtable",
+      "short_name": "airtable",
       "version": "1.0.0",
       "description": "Airtable records — depth-limited truncation (field names vary per base and table)",
       "mcp_pattern": [
@@ -11,12 +12,13 @@
         "mcp__airtable_mcp__*"
       ],
       "file": "profiles/mcp__airtable/default.toml",
-      "sha256": "09e2554904f678ed210d38aa767d0d6920a0b33a9354f065b976251a380785bb",
+      "sha256": "7e5b6e904fd2ab67209e3c73c65766da9154ec769f73266d89182b45fdb95122",
       "author": "sakebomb",
       "sample_tool": "mcp__airtable__list_records"
     },
     {
       "id": "mcp__aws",
+      "short_name": "aws",
       "version": "1.0.0",
       "description": "AWS CLI/SDK responses — depth-limited JSON truncation (AWS responses vary too much for field extraction)",
       "mcp_pattern": [
@@ -25,12 +27,13 @@
         "mcp__awscli__*"
       ],
       "file": "profiles/mcp__aws/default.toml",
-      "sha256": "d552c549ea95d49a8e8ce8f653f6e3992dadabc31fde7c1fc0e396cb24ff1230",
+      "sha256": "b7c038f95e9038471e64c85f6ff150695b15ec02b45f406ca864aaf4fb11ecbe",
       "author": "sakebomb",
       "sample_tool": "mcp__aws__list_buckets"
     },
     {
       "id": "mcp__chargebee",
+      "short_name": "chargebee",
       "version": "1.0.0",
       "description": "Chargebee subscription billing — extracts id, status, plan, customer, period, and amount from subscriptions, customers, and invoices",
       "mcp_pattern": [
@@ -38,12 +41,13 @@
         "mcp__chargebee_mcp__*"
       ],
       "file": "profiles/mcp__chargebee/default.toml",
-      "sha256": "a1ee22e137ca82a9f6d2e5529174647dc5bbaff54d294f81e1c8f785c2534404",
+      "sha256": "4ca47691be46b924b5183485385310fe70ad00abf440de9cae5bb926ae0f79c7",
       "author": "sakebomb",
       "sample_tool": "mcp__chargebee__list_subscriptions"
     },
     {
       "id": "mcp__confluence",
+      "short_name": "confluence",
       "version": "1.0.0",
       "description": "Confluence page and search results — extracts id, title, space, status, version",
       "mcp_pattern": [
@@ -51,12 +55,13 @@
         "mcp__atlassian_confluence__*"
       ],
       "file": "profiles/mcp__confluence/default.toml",
-      "sha256": "d600892a18c7c468d057e44d01394fa8f40cec4d84af6db3316fd9a51720f03c",
+      "sha256": "e3d4020e8e0302a0a382449ac530c5cb5b24f34d9502b48dc5cf7bd2712c10e8",
       "author": "sakebomb",
       "sample_tool": "mcp__confluence__search_content"
     },
     {
       "id": "mcp__datadog",
+      "short_name": "datadog",
       "version": "1.0.0",
       "description": "Datadog monitors, events, and dashboards — extracts id, name/title, type, status, query, tags",
       "mcp_pattern": [
@@ -64,22 +69,24 @@
         "mcp__datadog_mcp__*"
       ],
       "file": "profiles/mcp__datadog/default.toml",
-      "sha256": "e5b0126b9de141639a572341e304b6e2ec576000b10586228f2f6b9a5ddf8724",
+      "sha256": "0419043ec354f7f46893cde841d02d5bac37562dd3cff311ffa9593caf7c8773",
       "author": "sakebomb",
       "sample_tool": "mcp__datadog__list_monitors"
     },
     {
       "id": "mcp__figma",
+      "short_name": "figma",
       "version": "1.0.0",
       "description": "Figma comments, components and styles — extracts id, message/name, description",
       "mcp_pattern": "mcp__figma__*",
       "file": "profiles/mcp__figma/default.toml",
-      "sha256": "977e1e4d55a4a14f63c916140d62666b35b05a61f223ac5935258a66560106cb",
+      "sha256": "dfce488eec5f3d2cae1c82ea464337e4ea1946636cdad372287362fc372ab1eb",
       "author": "sakebomb",
       "sample_tool": "mcp__figma__get_comments"
     },
     {
       "id": "mcp__gcp",
+      "short_name": "gcp",
       "version": "1.0.0",
       "description": "GCP resource lists — extracts name, id, status, zone from items arrays",
       "mcp_pattern": [
@@ -88,12 +95,13 @@
         "mcp__gcloud__*"
       ],
       "file": "profiles/mcp__gcp/default.toml",
-      "sha256": "5af004844fa5e587d9d035be7c1b86d8664cd3eaa1363bcec06a78b12a4a3848",
+      "sha256": "d0f8f894ad1b90b162d1a63d4514bf80097af5b543a7c3ea0249dbb8454aa365",
       "author": "sakebomb",
       "sample_tool": "mcp__gcp__list_instances"
     },
     {
       "id": "mcp__gmail",
+      "short_name": "gmail",
       "version": "1.0.0",
       "description": "Gmail message lists and search results — extracts id, from, subject, date, snippet",
       "mcp_pattern": [
@@ -101,12 +109,13 @@
         "mcp__google_gmail__*"
       ],
       "file": "profiles/mcp__gmail/default.toml",
-      "sha256": "f030f248a59fe5177822d92c7a24c6bceb7db0668f12c95fe8373dd60b8fc24f",
+      "sha256": "05245d5d23cc59840dce8a243f8eca19214b70046e0dd9fc5af988b269455c03",
       "author": "sakebomb",
       "sample_tool": "mcp__gmail__list_emails"
     },
     {
       "id": "mcp__google_calendar",
+      "short_name": "google_calendar",
       "version": "1.0.0",
       "description": "Google Calendar events — extracts title, start, end, location, attendee count; discards full descriptions and recurrence rules",
       "mcp_pattern": [
@@ -114,12 +123,13 @@
         "mcp__googlecalendar__*"
       ],
       "file": "profiles/mcp__google_calendar/default.toml",
-      "sha256": "f1ace2c3a58f8f2d571ca8e9f9a77167a93f0429f688660c74b874991d5c7728",
+      "sha256": "030d17fc0cc7c60804c837b801029ad480750776993be7faf4928b8bc510b930",
       "author": "sakebomb",
       "sample_tool": "mcp__google_calendar__list_events"
     },
     {
       "id": "mcp__grafana",
+      "short_name": "grafana",
       "version": "1.0.0",
       "description": "Grafana dashboards, alerts, and data sources — extracts uid, title, status, url, tags",
       "mcp_pattern": [
@@ -127,12 +137,14 @@
         "mcp__grafana_mcp__*"
       ],
       "file": "profiles/mcp__grafana/default.toml",
-      "sha256": "51156bde4ec0ee96a50dce76e03254a251aae55199362f1879e9d0382f0ed718",
+      "sha256": "08a3511ea98ac93451cc5e5a959e3b469fd689d4fe99042275d095a0ef6706ff",
       "author": "sakebomb",
+      "mcp_url": "https://github.com/grafana/mcp-grafana",
       "sample_tool": "mcp__grafana__list_dashboards"
     },
     {
       "id": "mcp__hubspot",
+      "short_name": "hubspot",
       "version": "1.0.0",
       "description": "HubSpot CRM contacts, deals, and companies — extracts key fields and discards full property histories",
       "mcp_pattern": [
@@ -140,32 +152,35 @@
         "mcp__hubspot_crm__*"
       ],
       "file": "profiles/mcp__hubspot/default.toml",
-      "sha256": "28409e703a40cb61547b1ae5a04f7d67ab9439e26400dc5840d7e243fce76906",
+      "sha256": "098945f7df76f995ef750e81fd1928490ef039c42416a73d0177a1a91aed37ad",
       "author": "sakebomb",
       "sample_tool": "mcp__hubspot__search_contacts"
     },
     {
       "id": "mcp__jira",
+      "short_name": "jira",
       "version": "1.0.0",
       "description": "Jira issue and search results — extracts key, summary, status, assignee, priority",
       "mcp_pattern": "mcp__jira__*",
       "file": "profiles/mcp__jira/default.toml",
-      "sha256": "3bb2c9e70e5e47816cc5da2da73eb6e9650fbd142843565ccfad99e59884b731",
+      "sha256": "ea596e22c4e3bbb2aa5103a5e6e44d690dc499a54cb0689baa163d57f31a8a94",
       "author": "sakebomb",
       "sample_tool": "mcp__jira__search_issues"
     },
     {
       "id": "mcp__notion",
+      "short_name": "notion",
       "version": "1.0.0",
       "description": "Notion pages, databases, and search results — depth-limited truncation (block/property structures vary per database)",
       "mcp_pattern": "mcp__notion__*",
       "file": "profiles/mcp__notion/default.toml",
-      "sha256": "a94674e9ee9aefe7577912b523f67b4f3658f0f82fb2cba1444bd022ce35f15f",
+      "sha256": "6fd35cbf5f85f0fbc1c348bd7079f9e203cd60bc58fd6de9314e776c12288a84",
       "author": "sakebomb",
       "sample_tool": "mcp__notion__search"
     },
     {
       "id": "mcp__shopify",
+      "short_name": "shopify",
       "version": "1.0.0",
       "description": "Shopify orders, products, and customers — extracts id, title/name, status, price, email, fulfillment",
       "mcp_pattern": [
@@ -173,22 +188,24 @@
         "mcp__shopify_mcp__*"
       ],
       "file": "profiles/mcp__shopify/default.toml",
-      "sha256": "bb3a0b5f5dcae952d4c29fa689b27a16285144cc6fdc9252de643305dc0d97ec",
+      "sha256": "2bfc024f273e09d344bdbae9311a8ba88db8fba36538c0f2682b96e83a326d24",
       "author": "sakebomb",
       "sample_tool": "mcp__shopify__list_orders"
     },
     {
       "id": "mcp__stripe",
+      "short_name": "stripe",
       "version": "1.0.0",
       "description": "Stripe payments — extracts id, object type, status, amount, currency, customer, email from charges, customers, subscriptions, invoices",
       "mcp_pattern": "mcp__stripe__*",
       "file": "profiles/mcp__stripe/default.toml",
-      "sha256": "71fc3ba89b180fb0e5dda306cff6433e60db189e8cf5e4ed40d446a81f1fc03c",
+      "sha256": "a6faf4b0058dfd1e85749a584146ba6bea0088f310f29802ebb77140c75cbfca",
       "author": "sakebomb",
       "sample_tool": "mcp__stripe__list_customers"
     },
     {
       "id": "mcp__teams",
+      "short_name": "teams",
       "version": "1.0.0",
       "description": "Microsoft Teams messages, channels, and chats — extracts id, subject, sender, timestamp, importance",
       "mcp_pattern": [
@@ -196,22 +213,24 @@
         "mcp__microsoft_teams__*"
       ],
       "file": "profiles/mcp__teams/default.toml",
-      "sha256": "6ae233338b8f883b03f36370db3ecd46fdb1864e67a10f287c87700dabb38424",
+      "sha256": "ee309a6e06718a086e4add3689ee38d394b5f306a0f28c15e78f415700b15664",
       "author": "sakebomb",
       "sample_tool": "mcp__teams__list_messages"
     },
     {
       "id": "mcp__vercel",
+      "short_name": "vercel",
       "version": "1.0.0",
       "description": "Vercel deployments and projects — extracts name, status, url, created, duration",
       "mcp_pattern": "mcp__vercel__*",
       "file": "profiles/mcp__vercel/default.toml",
-      "sha256": "23880426dcae5dbe77462d3e4ca2c34d195136208e96b547b14c313245950c3d",
+      "sha256": "9ab7036cc1fe64fcf191338414ec2f68a4811fb5a8f2f34b70b3dae79dd85d11",
       "author": "sakebomb",
       "sample_tool": "mcp__vercel__list_deployments"
     },
     {
       "id": "mcp__xero",
+      "short_name": "xero",
       "version": "1.0.0",
       "description": "Xero accounting — extracts key fields from invoices, contacts, accounts, and bank transactions",
       "mcp_pattern": [
@@ -219,7 +238,7 @@
         "mcp__xero_mcp__*"
       ],
       "file": "profiles/mcp__xero/default.toml",
-      "sha256": "2fe65dd12f3f316c12f3f7c58e11dfa9facca8a6aa25119c015bb2790971328d",
+      "sha256": "807b100ffdb74fd43c595331d882942b6cdde68ecb80ad4a0705ea53d5753d0b",
       "author": "sakebomb",
       "sample_tool": "mcp__xero__list_invoices"
     }

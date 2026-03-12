@@ -1,5 +1,6 @@
 [profile]
 id          = "mcp__gcp"
+short_name  = "gcp"
 version     = "1.0.0"
 description = "GCP resource lists — extracts name, id, status, zone from items arrays"
 mcp_pattern = ["mcp__gcp__*", "mcp__google_cloud__*", "mcp__gcloud__*"]

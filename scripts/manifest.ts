@@ -12,12 +12,14 @@ const PROFILES_DIR = join(ROOT, "profiles");
 
 interface ProfileEntry {
   id: string;
+  short_name: string;
   version: string;
   description: string;
   mcp_pattern: string | string[];
   file: string;
   sha256: string;
   author?: string;
+  mcp_url?: string;
   sample_tool?: string;
 }
 
@@ -56,14 +58,18 @@ for (const file of files) {
     continue;
   }
 
+  const id = profile["id"] as string;
+  const shortName = (profile["short_name"] as string | undefined) ?? id.replace(/^mcp__/, "");
   entries.push({
-    id: profile["id"] as string,
+    id,
+    short_name: shortName,
     version: profile["version"] as string,
     description: (profile["description"] as string) ?? "",
     mcp_pattern: profile["mcp_pattern"] as string | string[],
     file: relative(ROOT, file),
     sha256,
     ...(profile["author"] ? { author: profile["author"] as string } : {}),
+    ...(profile["mcp_url"] ? { mcp_url: profile["mcp_url"] as string } : {}),
     ...(profile["sample_tool"] ? { sample_tool: profile["sample_tool"] as string } : {}),
   });
 }

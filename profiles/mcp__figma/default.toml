@@ -1,5 +1,6 @@
 [profile]
 id          = "mcp__figma"
+short_name  = "figma"
 version     = "1.0.0"
 description = "Figma comments, components and styles — extracts id, message/name, description"
 mcp_pattern = "mcp__figma__*"

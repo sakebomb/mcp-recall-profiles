@@ -1,5 +1,6 @@
 [profile]
 id          = "mcp__chargebee"
+short_name  = "chargebee"
 version     = "1.0.0"
 description = "Chargebee subscription billing — extracts id, status, plan, customer, period, and amount from subscriptions, customers, and invoices"
 mcp_pattern = ["mcp__chargebee__*", "mcp__chargebee_mcp__*"]
