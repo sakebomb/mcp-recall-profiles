@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "generated_at": "2026-03-12T16:31:04.532Z",
+  "generated_at": "2026-04-08T02:32:16.314Z",
   "profiles": [
     {
       "id": "mcp__airtable",
@@ -46,6 +46,41 @@
       "sample_tool": "mcp__chargebee__list_subscriptions"
     },
     {
+      "id": "mcp__claude_ai_gmail",
+      "short_name": "claude-ai-gmail",
+      "version": "1.0.0",
+      "description": "Claude AI Gmail MCP catch-all — truncates any tool output not matched by a more specific profile",
+      "mcp_pattern": "mcp__claude_ai_Gmail__*",
+      "file": "profiles/mcp__claude_ai_gmail/default.toml",
+      "sha256": "ef595d657f0737c0c5a608c1d1952b36e51dffbcce411cd89e6b9d9a383b2193",
+      "author": "sakebomb",
+      "mcp_url": "https://gmail.mcp.claude.com"
+    },
+    {
+      "id": "mcp__claude_ai_gmail__read_message",
+      "short_name": "claude-ai-gmail-message",
+      "version": "1.0.0",
+      "description": "Claude AI Gmail MCP single message — extracts id, threadId, snippet, and labelIds; skips full payload",
+      "mcp_pattern": "mcp__claude_ai_Gmail__gmail_read_message",
+      "file": "profiles/mcp__claude_ai_gmail/read_message.toml",
+      "sha256": "610f8ccc1bd6b71cbcf252d268d58b09e00023ff5344610b0838117543f22882",
+      "author": "sakebomb",
+      "mcp_url": "https://gmail.mcp.claude.com",
+      "sample_tool": "mcp__claude_ai_Gmail__gmail_read_message"
+    },
+    {
+      "id": "mcp__claude_ai_gmail__read_thread",
+      "short_name": "claude-ai-gmail-thread",
+      "version": "1.0.0",
+      "description": "Claude AI Gmail MCP thread — depth-truncates to show thread snippet and first 3 messages without full payloads",
+      "mcp_pattern": "mcp__claude_ai_Gmail__gmail_read_thread",
+      "file": "profiles/mcp__claude_ai_gmail/read_thread.toml",
+      "sha256": "1e259911bcbc6640ed5f9ae1c187febae4e6199e7f35e2c35513d30afe81fc7c",
+      "author": "sakebomb",
+      "mcp_url": "https://gmail.mcp.claude.com",
+      "sample_tool": "mcp__claude_ai_Gmail__gmail_read_thread"
+    },
+    {
       "id": "mcp__confluence",
       "short_name": "confluence",
       "version": "1.0.0",
@@ -60,6 +95,30 @@
       "sample_tool": "mcp__confluence__search_content"
     },
     {
+      "id": "mcp__context7",
+      "short_name": "context7",
+      "version": "1.0.0",
+      "description": "Context7 query-docs — extracts section titles and content previews from documentation responses",
+      "mcp_pattern": "mcp__context7__query-docs",
+      "file": "profiles/mcp__context7/default.toml",
+      "sha256": "7be73f26e748489a3fb633bdb39cc307d9f80b5c11e46f5198886f8fab028914",
+      "author": "sakebomb",
+      "mcp_url": "https://github.com/upstash/context7",
+      "sample_tool": "mcp__context7__query-docs"
+    },
+    {
+      "id": "mcp__context7__resolve",
+      "short_name": "context7-resolve",
+      "version": "1.0.0",
+      "description": "Context7 resolve-library-id — truncates library search results to top-level fields",
+      "mcp_pattern": "mcp__context7__resolve-library-id",
+      "file": "profiles/mcp__context7/resolve.toml",
+      "sha256": "e813fedcb290a9cc19f48e2a90601c1f17bf59235be5fed5698118065a13921b",
+      "author": "sakebomb",
+      "mcp_url": "https://github.com/upstash/context7",
+      "sample_tool": "mcp__context7__resolve-library-id"
+    },
+    {
       "id": "mcp__datadog",
       "short_name": "datadog",
       "version": "1.0.0",
@@ -72,6 +131,41 @@
       "sha256": "0419043ec354f7f46893cde841d02d5bac37562dd3cff311ffa9593caf7c8773",
       "author": "sakebomb",
       "sample_tool": "mcp__datadog__list_monitors"
+    },
+    {
+      "id": "mcp__docker__container_list",
+      "short_name": "docker-list",
+      "version": "1.0.0",
+      "description": "Docker container list — extracts name, image, status, and state per container",
+      "mcp_pattern": "mcp__docker__docker_container_list",
+      "file": "profiles/mcp__docker/container_list.toml",
+      "sha256": "e4c7cdba5ab7153b2c58203405cf37aecbe28a2092173c3b1debc3d22a38659d",
+      "author": "sakebomb",
+      "mcp_url": "https://github.com/docker/mcp-servers",
+      "sample_tool": "mcp__docker__docker_container_list"
+    },
+    {
+      "id": "mcp__docker",
+      "short_name": "docker",
+      "version": "1.0.0",
+      "description": "Docker MCP catch-all — depth-truncates JSON for inspect, system info, and other tool outputs",
+      "mcp_pattern": "mcp__docker__*",
+      "file": "profiles/mcp__docker/default.toml",
+      "sha256": "0ab1c2e491dd1f8906a581904cd278c8bd91c5532c6584d69ecb775af6dc2347",
+      "author": "sakebomb",
+      "mcp_url": "https://github.com/docker/mcp-servers"
+    },
+    {
+      "id": "mcp__docker__logs",
+      "short_name": "docker-logs",
+      "version": "1.0.0",
+      "description": "Docker container logs — truncates raw log output to the first 1500 characters",
+      "mcp_pattern": "mcp__docker__docker_container_logs",
+      "file": "profiles/mcp__docker/logs.toml",
+      "sha256": "aa7ff01b7f70583cc64ee3907feb6030137805033d787a3f66ac5c485bd35912",
+      "author": "sakebomb",
+      "mcp_url": "https://github.com/docker/mcp-servers",
+      "sample_tool": "mcp__docker__docker_container_logs"
     },
     {
       "id": "mcp__figma",
@@ -159,12 +253,13 @@
     {
       "id": "mcp__jira",
       "short_name": "jira",
-      "version": "1.0.0",
-      "description": "Jira issue and search results — extracts key, summary, status, assignee, priority",
+      "version": "1.1.0",
+      "description": "Jira issue and search results — extracts key, type, summary, status, assignee, priority",
       "mcp_pattern": "mcp__jira__*",
       "file": "profiles/mcp__jira/default.toml",
-      "sha256": "ea596e22c4e3bbb2aa5103a5e6e44d690dc499a54cb0689baa163d57f31a8a94",
+      "sha256": "74128a4abe46a82a1b9a5f59a1e532b8bff68a3eb138788da2767319862f6e22",
       "author": "sakebomb",
+      "mcp_url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/",
       "sample_tool": "mcp__jira__search_issues"
     },
     {
