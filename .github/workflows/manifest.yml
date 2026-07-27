@@ -49,7 +49,14 @@ jobs:
       # The commit above is pushed with the default GITHUB_TOKEN, and GitHub does
       # not trigger workflows from such pushes -- so a push-triggered signing
       # workflow would only ever attest the pre-regeneration content.
+      #
+      # Guarded to main because workflow_dispatch accepts any ref, and the client
+      # verifies with --repo only. Without this, dispatching on a feature branch
+      # would mint a repo-valid attestation for arbitrary manifest content.
+      # Guarding the step (not the job) keeps a branch dispatch useful as a
+      # dry run of the regeneration.
       - name: Attest manifest.json
+        if: github.ref == 'refs/heads/main'
         uses: actions/attest-build-provenance@v2
         with:
           subject-path: manifest.json
