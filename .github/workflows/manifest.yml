@@ -5,9 +5,22 @@ on:
     branches: [main]
     paths:
       - "profiles/**"
+      # manifest.json and its generator are included so that a hand-edited
+      # manifest, or a generator change that alters output shape, is still
+      # regenerated and attested. This cannot loop: the commit below is pushed
+      # with the default GITHUB_TOKEN, which never triggers workflows.
+      - "manifest.json"
+      - "scripts/manifest.ts"
   # Allows attesting the current manifest.json without a profile change
   # (e.g. to backfill an attestation).
   workflow_dispatch:
+
+# Serialize runs. Two close-together pushes would otherwise both regenerate and
+# race on `git push`; the loser fails and skips the attest step, leaving the
+# merged manifest unattested. Never cancel -- a run killed mid-push is worse.
+concurrency:
+  group: manifest
+  cancel-in-progress: false
 
 jobs:
   manifest:
@@ -22,7 +35,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run manifest
       - name: Commit updated manifest
         run: |
