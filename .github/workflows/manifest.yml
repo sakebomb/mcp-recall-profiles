@@ -43,7 +43,11 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add manifest.json
           git diff --staged --quiet || git commit -m "chore: regenerate manifest.json"
-          git push
+          # The concurrency group serializes runs against each other, but a human
+          # push landing mid-run still rejects this one non-fast-forward, which
+          # would fail the job and skip the attest step -- leaving manifest.json
+          # stale and unattested. Rebase onto the new tip and retry once.
+          git push || { git pull --rebase && git push; }
 
       # Must live in this job, not a separate workflow keyed on `manifest.json`.
       # The commit above is pushed with the default GITHUB_TOKEN, and GitHub does
@@ -53,8 +57,9 @@ jobs:
       # Guarded to main because workflow_dispatch accepts any ref, and the client
       # verifies with --repo only. Without this, dispatching on a feature branch
       # would mint a repo-valid attestation for arbitrary manifest content.
-      # Guarding the step (not the job) keeps a branch dispatch useful as a
-      # dry run of the regeneration.
+      # Guarding the step (not the job) keeps a branch dispatch useful for
+      # regenerating that branch's manifest -- it still commits and pushes to
+      # the branch; only the attestation is withheld.
       - name: Attest manifest.json
         if: github.ref == 'refs/heads/main'
         uses: actions/attest-build-provenance@v2
