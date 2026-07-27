@@ -5,13 +5,18 @@ on:
     branches: [main]
     paths:
       - "profiles/**"
+  # Allows attesting the current manifest.json without a profile change
+  # (e.g. to backfill an attestation).
+  workflow_dispatch:
 
 jobs:
   manifest:
-    name: Regenerate manifest.json
+    name: Regenerate and attest manifest.json
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -26,3 +31,12 @@ jobs:
           git add manifest.json
           git diff --staged --quiet || git commit -m "chore: regenerate manifest.json"
           git push
+
+      # Must live in this job, not a separate workflow keyed on `manifest.json`.
+      # The commit above is pushed with the default GITHUB_TOKEN, and GitHub does
+      # not trigger workflows from such pushes -- so a push-triggered signing
+      # workflow would only ever attest the pre-regeneration content.
+      - name: Attest manifest.json
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: manifest.json
