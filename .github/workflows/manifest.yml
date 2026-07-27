@@ -5,19 +5,37 @@ on:
     branches: [main]
     paths:
       - "profiles/**"
+      # manifest.json and its generator are included so that a hand-edited
+      # manifest, or a generator change that alters output shape, is still
+      # regenerated and attested. This cannot loop: the commit below is pushed
+      # with the default GITHUB_TOKEN, which never triggers workflows.
+      - "manifest.json"
+      - "scripts/manifest.ts"
+  # Allows attesting the current manifest.json without a profile change
+  # (e.g. to backfill an attestation).
+  workflow_dispatch:
+
+# Serialize runs. Two close-together pushes would otherwise both regenerate and
+# race on `git push`; the loser fails and skips the attest step, leaving the
+# merged manifest unattested. Never cancel -- a run killed mid-push is worse.
+concurrency:
+  group: manifest
+  cancel-in-progress: false
 
 jobs:
   manifest:
-    name: Regenerate manifest.json
+    name: Regenerate and attest manifest.json
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run manifest
       - name: Commit updated manifest
         run: |
@@ -25,4 +43,25 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add manifest.json
           git diff --staged --quiet || git commit -m "chore: regenerate manifest.json"
-          git push
+          # The concurrency group serializes runs against each other, but a human
+          # push landing mid-run still rejects this one non-fast-forward, which
+          # would fail the job and skip the attest step -- leaving manifest.json
+          # stale and unattested. Rebase onto the new tip and retry once.
+          git push || { git pull --rebase && git push; }
+
+      # Must live in this job, not a separate workflow keyed on `manifest.json`.
+      # The commit above is pushed with the default GITHUB_TOKEN, and GitHub does
+      # not trigger workflows from such pushes -- so a push-triggered signing
+      # workflow would only ever attest the pre-regeneration content.
+      #
+      # Guarded to main because workflow_dispatch accepts any ref, and the client
+      # verifies with --repo only. Without this, dispatching on a feature branch
+      # would mint a repo-valid attestation for arbitrary manifest content.
+      # Guarding the step (not the job) keeps a branch dispatch useful for
+      # regenerating that branch's manifest -- it still commits and pushes to
+      # the branch; only the attestation is withheld.
+      - name: Attest manifest.json
+        if: github.ref == 'refs/heads/main'
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: manifest.json
