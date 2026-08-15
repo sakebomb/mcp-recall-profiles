@@ -52,3 +52,6 @@ jobs:
           prompt: ${{ github.event_name == 'pull_request' && 'Review this PR for correctness, security, and adherence to the repo conventions in CLAUDE.md. Flag CRITICAL/HIGH issues clearly; keep notes concise.' || '' }}
           trigger_phrase: "@claude"
           track_progress: "true"
+
+          # Cost control: pin claude-action to Sonnet-5 (~40% cheaper than Opus 4.8, strong at review + most coding).
+          claude_args: "--model claude-sonnet-5"
