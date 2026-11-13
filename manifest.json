@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "generated_at": "2026-07-27T20:42:23.725Z",
+  "generated_at": "2026-11-13T04:07:08.325Z",
   "profiles": [
     {
       "id": "mcp__airtable",
@@ -79,6 +79,20 @@
       "author": "sakebomb",
       "mcp_url": "https://gmail.mcp.claude.com",
       "sample_tool": "mcp__claude_ai_Gmail__gmail_read_thread"
+    },
+    {
+      "id": "mcp__claude_ai_google_drive__search_files",
+      "short_name": "claude-ai-google-drive-search",
+      "version": "1.0.0",
+      "description": "Claude AI Google Drive file lists — one entry per file (title, type, modified, owner, id, first 200 chars of any snippet) instead of permission flags and etags",
+      "mcp_pattern": [
+        "mcp__claude_ai_Google_Drive__search_files",
+        "mcp__claude_ai_Google_Drive__list_recent_files"
+      ],
+      "file": "profiles/mcp__claude_ai_google_drive/search_files.toml",
+      "sha256": "eec97b98a566ccb861fca0d8345a9fd7d9ae16325fb94b5ed99f9ccccffc8589",
+      "author": "sakebomb",
+      "sample_tool": "mcp__claude_ai_Google_Drive__search_files"
     },
     {
       "id": "mcp__confluence",
