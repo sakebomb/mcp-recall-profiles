@@ -1,0 +1,34 @@
+[profile]
+id          = "mcp__claude_ai_google_drive__search_files"
+version     = "1.0.0"
+description = "Claude AI Google Drive file lists — one entry per file (title, type, modified, owner, id, first 200 chars of any snippet) instead of permission flags and etags"
+mcp_pattern = [
+  "mcp__claude_ai_Google_Drive__search_files",
+  "mcp__claude_ai_Google_Drive__list_recent_files",
+]
+short_name  = "claude-ai-google-drive-search"
+author      = "sakebomb"
+sample_tool = "mcp__claude_ai_Google_Drive__search_files"
+
+[strategy]
+type       = "json_extract"
+items_path = ["files"]
+fields     = [
+  "title",
+  "mimeType",
+  "modifiedTime",
+  "owner",
+  "id",
+  "contentSnippet",
+]
+max_items           = 50
+max_chars_per_field = 200
+fallback_chars      = 500
+
+[strategy.labels]
+"title"          = "Title"
+"mimeType"       = "Type"
+"modifiedTime"   = "Modified"
+"owner"          = "Owner"
+"id"             = "ID"
+"contentSnippet" = "Snippet"
